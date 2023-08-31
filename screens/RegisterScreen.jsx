@@ -4,7 +4,7 @@ import React from 'react'
 const RegisterScreen = () => {
   return (
     <View>
-      <Text>RegisterScreen</Text>
+      <Text>Register Screen</Text>
     </View>
   )
 }

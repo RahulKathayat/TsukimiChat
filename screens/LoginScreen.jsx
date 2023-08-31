@@ -1,11 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 const LoginScreen = () => {
   return (
-    <View>
-      <Text>LoginScreen</Text>
+    <View style={{flex:1,backgroundColor:"#928bc2",padding:10,alignItems:"center"}}>
+      <KeyboardAvoidingView>
+        <View style={{marginTop:100, justifyContent:"center" , alignItems:"center"}}>
+            <Text style={{ fontSize: 20, fontWeight: "600" }} >Login</Text>
+            <Text style={{ fontSize: 20, fontWeight: "600" , marginTop:15}} >Login to your Account</Text>
+        </View>
+      </KeyboardAvoidingView>
     </View>
+    
+    
   )
 }
 
