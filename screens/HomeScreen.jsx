@@ -11,6 +11,7 @@ import User from "../components/User";
 const HomeScreen = () => {
   const navigation = useNavigation();
   const { userId, setUserId } = useContext(UserType);
+  const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -58,6 +59,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      setLoading(true);
       const token = await AsyncStorage.getItem("authToken");
       const decodedToken = jwt_decode(token);
       console.log(decodedToken);
@@ -72,6 +74,7 @@ const HomeScreen = () => {
         .catch((error) => {
           console.log("error retrieving users", error);
         });
+      setLoading(false);
     };
 
     fetchUsers();
@@ -80,13 +83,17 @@ const HomeScreen = () => {
   //console.log("users", users);
   return (
     <View >
-      <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={{ padding: 13 }}>
-        {users.map((item, index) => (
-          <User key={index} item={item} />
-        ))}
-      </View>
-      </ScrollView>
+      {loading? (<Text style={{padding:10}}>Loading....</Text>) :(
+        <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ alignItems:"center",padding: 13 }}>
+          <Text style={{fontWeight:"600"}}>All Users of Tsukimi Chat</Text>
+          {users.map((item, index) => (
+            <User key={index} item={item} />
+          ))}
+        </View>
+        </ScrollView>
+      )}
+      
     </View>
   );
 };

@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   View,
+  Alert,
 } from "react-native";
 import React, { useState ,useEffect} from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -14,6 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -32,6 +34,7 @@ const LoginScreen = () => {
     checkLoginStatus();
   }, []);
   const handleLogin = () => {
+    setLoading(true);
     const user = {
       email: email,
       password: password,
@@ -43,13 +46,14 @@ const LoginScreen = () => {
         console.log(response);
         const token = response.data.token;
         AsyncStorage.setItem("authToken", token);
-
+        setLoading(false);
         navigation.replace("Home");
       })
       .catch((error) => {
         Alert.alert("Login Error", "Invalid email or password");
         console.log("Login Error", error);
       });
+      setLoading(false);
   };
   return (
     <View
@@ -133,7 +137,19 @@ const LoginScreen = () => {
               borderRadius: 50,
             }}
           >
-            <Text
+            {loading ? (
+              <Text
+              style={{
+                color: "white",
+                fontSize: 16,
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              Wait ...
+            </Text>
+            ) : (
+              <Text
               style={{
                 color: "white",
                 fontSize: 16,
@@ -143,6 +159,8 @@ const LoginScreen = () => {
             >
               Login
             </Text>
+            )}
+            
           </Pressable>
 
           <Pressable

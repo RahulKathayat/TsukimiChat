@@ -16,8 +16,10 @@ const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const handleRegister = () => {
+    setLoading(true);
     const user = {
       name: name,
       email: email,
@@ -29,6 +31,7 @@ const RegisterScreen = () => {
     axios.post('https://tsukimibackend.onrender.com/register', user)
       .then((response) => {
         console.log(response);
+        setLoading(false);
         Alert.alert(
           "Registration successful",
           "You have been registered Successfully"
@@ -45,6 +48,7 @@ const RegisterScreen = () => {
         );
         console.log("registration failed", error);
       });
+      setLoading(false);
   };
   return (
     <View
@@ -170,7 +174,19 @@ const RegisterScreen = () => {
               borderRadius: 50,
             }}
           >
-            <Text
+            {loading? (
+              <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              Wait ...
+            </Text>
+            ):(
+              <Text
               style={{
                 color: "white",
                 fontSize: 18,
@@ -180,6 +196,8 @@ const RegisterScreen = () => {
             >
               Register
             </Text>
+            )}
+            
           </Pressable>
 
           <Pressable
