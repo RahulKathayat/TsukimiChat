@@ -56,7 +56,7 @@ import {
     const fetchMessages = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/messages/${userId}/${recepientId}`
+          `https://tsukimibackend.onrender.com/messages/${userId}/${recepientId}`
         );
         const data = await response.json();
   
@@ -78,7 +78,7 @@ import {
       const fetchRecepientData = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8000/user/${recepientId}`
+            `https://tsukimibackend.onrender.com/user/${recepientId}`
           );
   
           const data = await response.json();
@@ -109,7 +109,7 @@ import {
           formData.append("messageText", message);
         }
   
-        const response = await fetch("http://localhost:8000/messages", {
+        const response = await fetch("https://tsukimibackend.onrender.com/messages", {
           method: "POST",
           body: formData,
         });
@@ -182,7 +182,7 @@ import {
   
     const deleteMessages = async (messageIds) => {
       try {
-        const response = await fetch("http://localhost:8000/deleteMessages", {
+        const response = await fetch("https://tsukimibackend.onrender.com/deleteMessages", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -215,9 +215,9 @@ import {
         quality: 1,
       });
   
-      console.log(result);
+      //console.log(result);
       if (!result.canceled) {
-        handleSend("image", result.uri);
+        handleSend("image", result?.assets[0]?.uri);
       }
     };
     const handleSelectMessage = (message) => {
@@ -291,7 +291,7 @@ import {
   
             if (item.messageType === "image") {
               const baseUrl =
-                "/Users/sujananand/Build/messenger-project/api/files/";
+                "/Users/rkath/desktop/reactnative/tsukimi/server/files/";
               const imageUrl = item.imageUrl;
               const filename = imageUrl.split("/").pop();
               const source = { uri: baseUrl + filename };

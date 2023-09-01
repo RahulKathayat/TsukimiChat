@@ -36,11 +36,12 @@ const HomeScreen = () => {
     const fetchUsers = async () => {
       const token = await AsyncStorage.getItem("authToken");
       const decodedToken = jwt_decode(token);
+      console.log(decodedToken);
       const userId = decodedToken.userId;
       setUserId(userId);
 
       axios
-        .get(`http://localhost:8000/users/${userId}`)
+        .get(`https://tsukimibackend.onrender.com/users/${userId}`)
         .then((response) => {
           setUsers(response.data);
         })

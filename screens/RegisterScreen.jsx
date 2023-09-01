@@ -26,8 +26,7 @@ const RegisterScreen = () => {
     };
 
     // send a POST  request to the backend API to register the user
-    axios
-      .post("http://localhost:8000/register", user)
+    axios.post('https://tsukimibackend.onrender.com/register', user)
       .then((response) => {
         console.log(response);
         Alert.alert(

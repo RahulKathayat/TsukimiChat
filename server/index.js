@@ -1,22 +1,24 @@
 const express = require('express');
-const app = express();
+const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const cors = require('cors');
+const cors= require('cors');
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv");
 
 dotenv.config();
+
+const app = express();
 const PORT = process.env.PORT ;
 
 app.use(cors({
-    origin: "*",
-    credentials: true,
+  origin: "*",
+  credentials: true,
 }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 app.use(passport.initialize());
 
 mongoose
@@ -31,6 +33,12 @@ mongoose
     console.log("Error in Database connection", err);
   });
 
+  app.get("/", (req, res) => {
+    return res.json({
+      success: true,
+      message: "Your server is up and running ...",
+    });
+  });
 
 app.listen(PORT, () => {
 console.log(`Server running on port number ${PORT}`);
@@ -47,7 +55,7 @@ app.post("/register", (req, res) => {
 
   // create a new User object
   const newUser = new User({ name, email, password, image });
-
+  console.log(newUser);
   // save the user to the database
   newUser
     .save()
@@ -84,7 +92,7 @@ app.post("/login", (req, res) => {
       .json({ message: "Email and the password are required" });
   }
 
-  //check for that user in the database
+//   //check for that user in the database
   User.findOne({ email })
     .then((user) => {
       if (!user) {
