@@ -92,7 +92,7 @@ const User = ({ item }) => {
             backgroundColor: "#82CD47",
             padding: 10,
             width: 105,
-            borderRadius: 6,
+            borderRadius: 50,
           }}
         >
           <Text style={{ textAlign: "center", color: "white" }}>Friends</Text>
@@ -103,7 +103,7 @@ const User = ({ item }) => {
             backgroundColor: "gray",
             padding: 10,
             width: 105,
-            borderRadius: 6,
+            borderRadius: 50,
           }}
         >
           <Text style={{ textAlign: "center", color: "white", fontSize: 13 }}>
@@ -116,7 +116,7 @@ const User = ({ item }) => {
           style={{
             backgroundColor: "#567189",
             padding: 10,
-            borderRadius: 6,
+            borderRadius: 50,
             width: 105,
           }}
         >

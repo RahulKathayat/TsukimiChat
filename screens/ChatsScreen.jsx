@@ -18,7 +18,7 @@ const ChatsScreen = () => {
         const data = await response.json();
 
         if (response.ok) {
-          setAcceptedFriends(data);
+          setAcceptedFriends(data.reverse());
         }
       } catch (error) {
         console.log("error showing the accepted friends", error);

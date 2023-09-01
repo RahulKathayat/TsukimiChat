@@ -55,7 +55,7 @@ const LoginScreen = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#424874",
         padding: 10,
         alignItems: "center",
       }}
@@ -68,18 +68,18 @@ const LoginScreen = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ color: "#4A55A2", fontSize: 17, fontWeight: "600" }}>
-            Sign In
+          <Text style={{ color: "#FCD1D1", fontSize: 20, fontWeight: "600"}}>
+            Log In
           </Text>
 
-          <Text style={{ fontSize: 17, fontWeight: "600", marginTop: 15 }}>
-            Sign In to Your Account
+          <Text style={{ color:"#EEE0C9" ,fontSize: 16, fontWeight: "600", marginTop: 15 }}>
+            Log in to your Account
           </Text>
         </View>
 
         <View style={{ marginTop: 50 }}>
           <View>
-            <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
               Email
             </Text>
 
@@ -88,18 +88,19 @@ const LoginScreen = () => {
               onChangeText={(text) => setEmail(text)}
               style={{
                 fontSize: email ? 18 : 18,
-                borderBottomColor: "gray",
+                borderBottomColor: "white",
                 borderBottomWidth: 1,
+                color: "white",
                 marginVertical: 10,
                 width: 300,
               }}
-              placeholderTextColor={"black"}
-              placeholder="enter Your Email"
+              placeholderTextColor={"gray"}
+              placeholder="enter your email ..."
             />
           </View>
 
           <View style={{ marginTop: 10 }}>
-            <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
               Password
             </Text>
 
@@ -109,26 +110,27 @@ const LoginScreen = () => {
               secureTextEntry={true}
               style={{
                 fontSize: email ? 18 : 18,
-                borderBottomColor: "gray",
+                borderBottomColor: "white",
                 borderBottomWidth: 1,
+                color: "white",
                 marginVertical: 10,
                 width: 300,
               }}
-              placeholderTextColor={"black"}
-              placeholder="Passowrd"
+              placeholderTextColor={"gray"}
+              placeholder="enter password ... "
             />
           </View>
 
           <Pressable
             onPress={handleLogin}
             style={{
-              width: 200,
-              backgroundColor: "#4A55A2",
+              width: 150,
+              backgroundColor: "#AA96DA",
               padding: 15,
               marginTop: 50,
               marginLeft: "auto",
               marginRight: "auto",
-              borderRadius: 6,
+              borderRadius: 50,
             }}
           >
             <Text
@@ -147,7 +149,7 @@ const LoginScreen = () => {
             onPress={() => navigation.navigate("Register")}
             style={{ marginTop: 15 }}
           >
-            <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
+            <Text style={{ textAlign: "center", color: "#BDD2B6", fontSize: 16 }}>
               Dont't have an account? Sign Up
             </Text>
           </Pressable>

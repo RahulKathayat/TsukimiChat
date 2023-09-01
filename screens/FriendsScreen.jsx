@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View,ScrollView } from "react-native";
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { UserType } from "../UserContext";
@@ -33,18 +33,20 @@ const FriendsScreen = () => {
 
   console.log(friendRequests);
   return (
-    <View style={{ padding: 10, marginHorizontal: 12 }}>
-      {friendRequests.length > 0 && <Text>Your Friend Requests!</Text>}
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={{ alignItems:"center",justifyContent:"center",backgroundColor:"#E1CCEC",padding: 10, marginHorizontal: 12 }}>
+        {friendRequests.length > 0 && <Text style={{fontWeight:"600",fontSize:16}}>Your Friend Requests !!</Text>}
 
-      {friendRequests.map((item, index) => (
-        <FriendRequest
-          key={index}
-          item={item}
-          friendRequests={friendRequests}
-          setFriendRequests={setFriendRequests}
-        />
-      ))}
-    </View>
+        {friendRequests.map((item, index) => (
+          <FriendRequest
+            key={index}
+            item={item}
+            friendRequests={friendRequests}
+            setFriendRequests={setFriendRequests}
+          />
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 

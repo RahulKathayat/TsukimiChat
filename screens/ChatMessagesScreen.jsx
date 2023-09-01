@@ -7,6 +7,7 @@ import {
     TextInput,
     Pressable,
     Image,
+    Alert,
   } from "react-native";
   import React, { useState, useContext, useLayoutEffect, useEffect,useRef } from "react";
   import { Feather } from "@expo/vector-icons";
@@ -217,7 +218,8 @@ import {
   
       //console.log(result);
       if (!result.canceled) {
-        handleSend("image", result?.assets[0]?.uri);
+        //handleSend("image", result?.assets[0]?.uri);
+        Alert.alert("Oops ...", "Developer was too lazy to add this functionality :D ");
       }
     };
     const handleSelectMessage = (message) => {
@@ -236,7 +238,7 @@ import {
       }
     };
     return (
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: "#F0F0F0" }}>
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: "#D8D9DA" }}>
         <ScrollView ref={scrollViewRef} contentContainerStyle={{flexGrow:1}} onContentSizeChange={handleContentSizeChange}>
           {messages.map((item, index) => {
             if (item.messageType === "text") {
@@ -249,7 +251,7 @@ import {
                     item?.senderId?._id === userId
                       ? {
                           alignSelf: "flex-end",
-                          backgroundColor: "#DCF8C6",
+                          backgroundColor: "#A8DF8E",
                           padding: 8,
                           maxWidth: "60%",
                           borderRadius: 7,
@@ -257,7 +259,7 @@ import {
                         }
                       : {
                           alignSelf: "flex-start",
-                          backgroundColor: "white",
+                          backgroundColor: "#FFD9B7",
                           padding: 8,
                           margin: 10,
                           borderRadius: 7,
@@ -269,7 +271,10 @@ import {
                 >
                   <Text
                     style={{
-                      fontSize: 13,
+                      fontWeight:"500",
+                      fontSize: 15,
+                      paddingLeft:5,
+                      paddingRight:5,
                       textAlign: isSelected ? "right" : "left",
                     }}
                   >
@@ -279,7 +284,8 @@ import {
                     style={{
                       textAlign: "right",
                       fontSize: 9,
-                      color: "gray",
+                      fontWeight:"500",
+                      color: "black",
                       marginTop: 5,
                     }}
                   >
@@ -350,7 +356,7 @@ import {
             paddingHorizontal: 10,
             paddingVertical: 10,
             borderTopWidth: 1,
-            borderTopColor: "#dddddd",
+            borderTopColor: "black",
             marginBottom: showEmojiSelector ? 0 : 25,
           }}
         >
@@ -359,7 +365,7 @@ import {
             style={{ marginRight: 5 }}
             name="emoji-happy"
             size={24}
-            color="gray"
+            color="black"
           />
   
           <TextInput
@@ -369,7 +375,7 @@ import {
               flex: 1,
               height: 40,
               borderWidth: 1,
-              borderColor: "#dddddd",
+              borderColor: "black",
               borderRadius: 20,
               paddingHorizontal: 10,
             }}
@@ -384,9 +390,9 @@ import {
               marginHorizontal: 8,
             }}
           >
-            <Entypo onPress={pickImage} name="camera" size={24} color="gray" />
+            <Entypo onPress={pickImage} name="camera" size={24} color="black" />
   
-            <Feather name="mic" size={24} color="gray" />
+            <Feather name="mic" size={24} color="black" />
           </View>
   
           <Pressable

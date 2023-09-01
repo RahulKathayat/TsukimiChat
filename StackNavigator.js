@@ -24,13 +24,33 @@ const StackNavigator = () => {
           component={RegisterScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen options={
+          {  contentStyle:{backgroundColor: "#E1CCEC"},
+            headerStyle: {
+              backgroundColor: '#B1B2FF'} 
+          }} 
+          name="Home" component={HomeScreen} />
 
-        <Stack.Screen name="Friends" component={FriendsScreen} />
+        <Stack.Screen options={
+          { contentStyle:{backgroundColor: "#E1CCEC"}, 
+            headerStyle: {
+              backgroundColor: '#B1B2FF'} 
+          }} 
+          name="Friend Requests" component={FriendsScreen} />
 
-        <Stack.Screen name="Chats" component={ChatsScreen} />
+        <Stack.Screen options={
+          {  contentStyle:{backgroundColor: "#E1CCEC"},
+            headerStyle: {
+              backgroundColor: '#B1B2FF'} 
+          }} 
+          name="Chats" component={ChatsScreen} />
 
-        <Stack.Screen name="Messages" component={ChatMessagesScreen} />
+        <Stack.Screen options={
+          {  contentStyle:{backgroundColor: "#E1CCEC"},
+            headerStyle: {
+              backgroundColor: '#B1B2FF'} 
+          }} 
+          name="Messages" component={ChatMessagesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

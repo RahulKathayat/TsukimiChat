@@ -56,7 +56,7 @@ const UserChat = ({ item }) => {
         alignItems: "center",
         gap: 10,
         borderWidth: 0.7,
-        borderColor: "#D0D0D0",
+        borderColor: "gray",
         borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,

@@ -50,7 +50,7 @@ const RegisterScreen = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#424874",
         padding: 10,
         alignItems: "center",
       }}
@@ -63,18 +63,18 @@ const RegisterScreen = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ color: "#4A55A2", fontSize: 17, fontWeight: "600" }}>
-            Register
+          <Text style={{ color: "#FCD1D1", fontSize: 20, fontWeight: "600" }}>
+            Sign Up
           </Text>
 
-          <Text style={{ fontSize: 17, fontWeight: "600", marginTop: 15 }}>
-            Register to your Account
+          <Text style={{color: "#EEE0C9", fontSize: 16, fontWeight: "600", marginTop: 15 }}>
+            Register your Account
           </Text>
         </View>
 
         <View style={{ marginTop: 50 }}>
           <View style={{ marginTop: 10 }}>
-            <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
               Name
             </Text>
 
@@ -83,18 +83,19 @@ const RegisterScreen = () => {
               onChangeText={(text) => setName(text)}
               style={{
                 fontSize: email ? 18 : 18,
-                borderBottomColor: "gray",
+                borderBottomColor: "white",
                 borderBottomWidth: 1,
+                color: "white",
                 marginVertical: 10,
                 width: 300,
               }}
-              placeholderTextColor={"black"}
-              placeholder="Enter your name ..."
+              placeholderTextColor={"gray"}
+              placeholder="enter your name ..."
             />
           </View>
 
           <View>
-            <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
               Email
             </Text>
 
@@ -102,19 +103,20 @@ const RegisterScreen = () => {
               value={email}
               onChangeText={(text) => setEmail(text)}
               style={{
-                fontSize: email ? 18 : 18,
-                borderBottomColor: "gray",
-                borderBottomWidth: 1,
+                fontSize: 18,
+                color: "white",
+                borderColor: "white",
+                borderBottomWidth:1,
                 marginVertical: 10,
                 width: 300,
               }}
-              placeholderTextColor={"black"}
-              placeholder="Enter your email ..."
+              placeholderTextColor={"gray"}
+              placeholder="enter your email ..."
             />
           </View>
 
           <View style={{ marginTop: 10 }}>
-            <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
               Password
             </Text>
 
@@ -124,18 +126,19 @@ const RegisterScreen = () => {
               secureTextEntry={true}
               style={{
                 fontSize: email ? 18 : 18,
-                borderBottomColor: "gray",
+                borderBottomColor: "white",
                 borderBottomWidth: 1,
+                color: "white",
                 marginVertical: 10,
                 width: 300,
               }}
-              placeholderTextColor={"black"}
-              placeholder="Password ... "
+              placeholderTextColor={"gray"}
+              placeholder="enter your password ... "
             />
           </View>
 
           <View style={{ marginTop: 10 }}>
-            <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
               Image
             </Text>
 
@@ -144,21 +147,22 @@ const RegisterScreen = () => {
               onChangeText={(text) => setImage(text)}
               style={{
                 fontSize: email ? 18 : 18,
-                borderBottomColor: "gray",
+                borderBottomColor: "white",
                 borderBottomWidth: 1,
+                color: "white",
                 marginVertical: 10,
                 width: 300,
               }}
-              placeholderTextColor={"black"}
-              placeholder="Image ..."
+              placeholderTextColor={"gray"}
+              placeholder="enter profile picture URL ..."
             />
           </View>
 
           <Pressable
             onPress={handleRegister}
             style={{
-              width: 200,
-              backgroundColor: "#4A55A2",
+              width: 130,
+              backgroundColor: "#AA96DA",
               padding: 15,
               marginTop: 50,
               marginLeft: "auto",
@@ -169,7 +173,7 @@ const RegisterScreen = () => {
             <Text
               style={{
                 color: "white",
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: "bold",
                 textAlign: "center",
               }}
@@ -182,8 +186,8 @@ const RegisterScreen = () => {
             onPress={() => navigation.goBack()}
             style={{ marginTop: 15 }}
           >
-            <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
-              Already Have an account? Sign in
+            <Text style={{ textAlign: "center", color: "#BDD2B6", fontSize: 16 }}>
+              Already Have an account? Log in
             </Text>
           </Pressable>
         </View>

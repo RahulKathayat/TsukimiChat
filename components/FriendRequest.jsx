@@ -54,7 +54,7 @@ const FriendRequest = ({ item, friendRequests, setFriendRequests }) => {
 
       <Pressable
         onPress={() => acceptRequest(item._id)}
-        style={{ backgroundColor: "#0066b2", padding: 10, borderRadius: 6 }}
+        style={{ backgroundColor: "#0066b2", padding: 10, borderRadius: 50 }}
       >
         <Text style={{ textAlign: "center", color: "white" }}>Accept</Text>
       </Pressable>
