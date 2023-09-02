@@ -20,6 +20,8 @@ const LoginScreen = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
+        const res=await axios.get("https://tsukimibackend.onrender.com");
+        console.log(res.data.message);
         const token = await AsyncStorage.getItem("authToken");
         if (token) {
           navigation.replace("Home");

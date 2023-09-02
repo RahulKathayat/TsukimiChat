@@ -12,47 +12,47 @@ import ChatMessagesScreen from "./screens/ChatMessagesScreen";
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={RegisterScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen options={
-          {  contentStyle:{backgroundColor: "#E1CCEC"},
-            headerStyle: {
-              backgroundColor: '#B1B2FF'} 
-          }} 
-          name="Home" component={HomeScreen} />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen options={
+            {  contentStyle:{backgroundColor: "#E1CCEC"},
+              headerStyle: {
+                backgroundColor: '#B1B2FF'} 
+            }} 
+            name="Home" component={HomeScreen} />
 
-        <Stack.Screen options={
-          { contentStyle:{backgroundColor: "#E1CCEC"}, 
-            headerStyle: {
-              backgroundColor: '#B1B2FF'} 
-          }} 
-          name="Friend Requests" component={FriendsScreen} />
+          <Stack.Screen options={
+            { contentStyle:{backgroundColor: "#E1CCEC"}, 
+              headerStyle: {
+                backgroundColor: '#B1B2FF'} 
+            }} 
+            name="Friend Requests" component={FriendsScreen} />
 
-        <Stack.Screen options={
-          {  contentStyle:{backgroundColor: "#E1CCEC"},
-            headerStyle: {
-              backgroundColor: '#B1B2FF'} 
-          }} 
-          name="Chats" component={ChatsScreen} />
+          <Stack.Screen options={
+            {  contentStyle:{backgroundColor: "#E1CCEC"},
+              headerStyle: {
+                backgroundColor: '#B1B2FF'} 
+            }} 
+            name="Chats" component={ChatsScreen} />
 
-        <Stack.Screen options={
-          {  contentStyle:{backgroundColor: "#E1CCEC"},
-            headerStyle: {
-              backgroundColor: '#B1B2FF'} 
-          }} 
-          name="Messages" component={ChatMessagesScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen options={
+            {  contentStyle:{backgroundColor: "#E1CCEC"},
+              headerStyle: {
+                backgroundColor: '#B1B2FF'} 
+            }} 
+            name="Messages" component={ChatMessagesScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 };
 
