@@ -21,6 +21,7 @@ import {
   import * as ImagePicker from "expo-image-picker";
   
   const ChatMessagesScreen = () => {
+    const [reload, setReload] = useState([]);
     const [showEmojiSelector, setShowEmojiSelector] = useState(false);
     const [selectedMessages, setSelectedMessages] = useState([]);
     const [messages, setMessages] = useState([]);
@@ -73,7 +74,7 @@ import {
   
     useEffect(() => {
       fetchMessages();
-    }, []);
+    }, [reload]);
   
     useEffect(() => {
       const fetchRecepientData = async () => {
@@ -167,6 +168,11 @@ import {
         headerRight: () =>
           selectedMessages.length > 0 ? (
             <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+              <MaterialIcons onPress={ 
+                () => {
+                  setSelectedMessages([]);
+                }
+               } name="cancel" size={24} color="black" />
               <Ionicons name="md-arrow-redo-sharp" size={24} color="black" />
               <Ionicons name="md-arrow-undo" size={24} color="black" />
               <FontAwesome name="star" size={24} color="black" />
@@ -177,7 +183,9 @@ import {
                 color="black"
               />
             </View>
-          ) : null,
+          ) : (
+            <Ionicons onPress={() => setReload([])} name="reload-outline" size={28} color="black" />
+          ),
       });
     }, [recepientData, selectedMessages]);
   
@@ -192,8 +200,7 @@ import {
         });
   
         if (response.ok) {
-          setSelectedMessages((prevSelectedMessages) =>
-          prevSelectedMessages.filter((id) => !messageIds.includes(id))
+          setSelectedMessages([]
         );
   
           fetchMessages();
@@ -245,7 +252,7 @@ import {
               const isSelected = selectedMessages.includes(item._id);
               return (
                 <Pressable
-                  onLongPress={() => handleSelectMessage(item)}
+                  onLongPress={() => { if(item?.senderId?._id === userId) handleSelectMessage(item)}}
                   key={index}
                   style={[
                     item?.senderId?._id === userId

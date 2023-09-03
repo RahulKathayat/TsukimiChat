@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View ,ScrollView, Pressable} from "react-native";
-import React, { useContext,useEffect,useState } from "react";
+import React, { useContext,useEffect,useState,useLayoutEffect } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { UserType } from "../UserContext";
 import { useNavigation } from "@react-navigation/native";
 import UserChat from "../components/UserChat";
@@ -7,8 +8,19 @@ import UserChat from "../components/UserChat";
 
 const ChatsScreen = () => {
   const [acceptedFriends, setAcceptedFriends] = useState([]);
+  const [reload, setReload] = useState([]);
   const { userId, setUserId } = useContext(UserType);
   const navigation = useNavigation();
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: "",
+      headerRight: () => (
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+          <Ionicons onPress={() => setReload([])} name="reload-outline" size={28} color="black" />
+        </View>
+      ),
+    });
+  }, []);
   useEffect(() => {
     const acceptedFriendsList = async () => {
       try {
@@ -26,7 +38,7 @@ const ChatsScreen = () => {
     };
 
     acceptedFriendsList();
-  }, []);
+  }, [reload]);
   console.log("friends",acceptedFriends)
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
