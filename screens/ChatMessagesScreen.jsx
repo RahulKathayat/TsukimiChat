@@ -105,7 +105,7 @@ import {
             name: "image.jpg",
             type: "image/jpeg",
           });
-        } else {
+        } else if(message.length){
           formData.append("messageType", "text");
           formData.append("messageText", message);
         }

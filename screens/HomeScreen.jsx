@@ -9,6 +9,7 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import User from "../components/User";
 const HomeScreen = () => {
+  const [reload, setReload] = useState([]);
   const navigation = useNavigation();
   const { userId, setUserId } = useContext(UserType);
   const [loading, setLoading] = useState(false);
@@ -17,16 +18,19 @@ const HomeScreen = () => {
     navigation.setOptions({
       headerTitle: "",
       headerLeft: () => (
-        <Pressable onPress={()=>{Alert.alert("Made with love ❤️, Rahul Kathayat","Fun Fact : The Japanese kanji Tsukimi, is a Moon viewing festival in Japan. Developer decided to go with this name because he began developing this app on a Full moon , nothing fancy.")}}>
+        <Pressable style={{flexDirection: "row" , gap: 5}} onPress={()=>{Alert.alert("Made with love ❤️, Rahul Kathayat","Fun Fact : The Japanese kanji Tsukimi, is a Moon viewing festival in Japan. Developer decided to go with this name because he began developing this app on a Full moon , nothing fancy.")}}>
         <Text style={{ fontSize: 16, fontWeight: "bold" }}>Tsukimi Chat</Text>
+        <Ionicons name="moon" size={20} color="black" />
         </Pressable>
+        
       ),
       headerRight: () => (
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
-          <Ionicons onPress={() => navigation.navigate("Chats")} name="chatbox-ellipses-outline" size={24} color="black" />
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+          <Ionicons onPress={() => setReload([])} name="reload-outline" size={24} color="black" />
+          <MaterialIcons onPress={() => navigation.navigate("Chats")} name="message" size={24} color="black" />
           <MaterialIcons
             onPress={() => navigation.navigate("Friend Requests")}
-            name="people-outline"
+            name="people"
             size={24}
             color="black"
           />
@@ -78,7 +82,7 @@ const HomeScreen = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [reload]);
 
   //console.log("users", users);
   return (
