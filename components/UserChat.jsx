@@ -63,10 +63,28 @@ const UserChat = ({ item }) => {
         padding: 10,
       }}
     >
-      <Image
-        style={{ width: 50, height: 50, borderRadius: 25, resizeMode: "cover" }}
-        source={{ uri: item?.image }}
-      />
+      <View style={{position:"relative" , width:50,height:50}}>
+        <Image
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+            resizeMode: "cover",
+            position: "absolute",
+          }}
+          source={require('../assets/sticker.png')}
+        />
+        <Image
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+            resizeMode: "cover",
+            position: "absolute",
+          }}
+          source={{ uri: item.image }}
+        />
+      </View>
 
       <View style={{ flex: 1 }}>
         <Text style={{ fontSize: 15, fontWeight: "500" }}>{item?.name}</Text>

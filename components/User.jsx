@@ -70,13 +70,24 @@ const User = ({ item }) => {
     <Pressable
       style={{ flexDirection: "row", alignItems: "center", marginVertical: 10 }}
     >
-      <View>
+      <View style={{position:"relative" , width:50,height:50}}>
         <Image
           style={{
             width: 50,
             height: 50,
             borderRadius: 25,
             resizeMode: "cover",
+            position: "absolute",
+          }}
+          source={require('../assets/sticker.png')}
+        />
+        <Image
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+            resizeMode: "cover",
+            position: "absolute",
           }}
           source={{ uri: item.image }}
         />

@@ -148,15 +148,29 @@ import {
               </View>
             ) : (
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Image
-                  style={{
-                    width: 30,
+                <View style={{position:"relative" , width:30,height:30}}>
+                  <Image
+                    style={{
+                      width: 30,
                     height: 30,
                     borderRadius: 15,
                     resizeMode: "cover",
-                  }}
-                  source={{ uri: recepientData?.image }}
-                />
+                      position: "absolute",
+                    }}
+                    source={require('../assets/sticker.png')}
+                  />
+                  <Image
+                    style={{
+                      width: 30,
+                    height: 30,
+                    borderRadius: 15,
+                    resizeMode: "cover",
+                      position: "absolute",
+                    }}
+                    source={{ uri: recepientData?.image }}
+                  />
+                </View>
+                
   
                 <Text style={{ marginLeft: 5, fontSize: 15, fontWeight: "bold" }}>
                   {recepientData?.name}

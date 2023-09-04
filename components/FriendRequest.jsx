@@ -41,10 +41,28 @@ const FriendRequest = ({ item, friendRequests, setFriendRequests }) => {
         marginVertical: 10,
       }}
     >
-      <Image
-        style={{ width: 50, height: 50, borderRadius: 25 }}
-        source={{ uri: item.image }}
-      />
+      <View style={{position:"relative" , width:50,height:50}}>
+        <Image
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+            resizeMode: "cover",
+            position: "absolute",
+          }}
+          source={require('../assets/sticker.png')}
+        />
+        <Image
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+            resizeMode: "cover",
+            position: "absolute",
+          }}
+          source={{ uri: item.image }}
+        />
+      </View>
 
       <Text
         style={{ fontSize: 15, fontWeight: "bold", marginLeft: 10, flex: 1 }}
