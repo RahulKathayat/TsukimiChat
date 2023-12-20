@@ -373,7 +373,8 @@ app.post('/submit', async (req, res) => {
     
       res.status(200).send('Submission successful');
   }
-  catch{
+  catch(e){
+    console.log("error aya:" ,e);
     res.status(400).send('Error Occured');
   }
 });
