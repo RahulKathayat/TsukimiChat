@@ -378,3 +378,13 @@ app.post('/submit', async (req, res) => {
     res.status(400).send('Error Occured');
   }
 });
+
+app.get('/submissions', async (req, res) => {
+  try{
+    const all = await Coordinates.find({});
+    res.status(200).send(all);
+
+  }catch(e){
+    console.log("error aya:" ,e);
+  }
+});
