@@ -356,7 +356,7 @@ app.post('/submit', async (req, res) => {
       console.log("user and data ", user, data); 
       try{
 
-        const decoded = jwt.verify(user, "tsukimi");
+        const decoded = await jwt.verify(user, process.env.JWT_SECRET);
         console.log("decoded:", decoded);
       }catch{
         console.log("error in jwt verify");
