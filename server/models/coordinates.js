@@ -5,9 +5,9 @@ const coordinateSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  coordinates: {
+  coords: {
     type: String,
-    defaultValue: "30.6848559 76.6654045"
+    default: "30.6848559 76.6654045"
   },
   timeStamp: {
     type: Date,
