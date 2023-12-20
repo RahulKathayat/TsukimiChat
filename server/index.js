@@ -8,7 +8,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const cors= require('cors');
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv");
-const { ObjectId } = require('mongodb');
 
 dotenv.config();
 
@@ -354,10 +353,8 @@ app.get("/friends/:userId",(req,res) => {
 app.post('/submit', async (req, res) => {
   const { user, data } = req.body;
   const decoded = jwt.verify(user, "tsukimi");
-  const userId1=decoded.userId;
-  const userId2= new ObjectId(userId1);
   // Save submission to MongoDB
-  const submission = new Coordinates({ userId2, data });
+  const submission = new Coordinates({ decoded, data });
   await submission.save();
 
   // Emit event to notify admin
