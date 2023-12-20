@@ -357,7 +357,7 @@ app.post('/submit', async (req, res) => {
       const decoded = jwt.verify(user, "tsukimi");
       const userId = decoded.userId;
       console.log("user id:", userId);
-      const objectId = mongoose.Schema.Types.ObjectId(userId);
+      const objectId = mongoose.Types.ObjectId(userId);
       console.log("object id:", objectId);
       // Save submission to MongoDB
       const submission = new Coordinates({ objectId, data });
