@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const passport = require('passport');
+const http = require('http');
+const socketIO = require('socket.io');
 const LocalStrategy = require('passport-local').Strategy;
 const cors= require('cors');
 const jwt = require('jsonwebtoken');
@@ -10,6 +12,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
 const PORT = process.env.PORT ;
 
 app.use(cors({
@@ -40,6 +44,11 @@ mongoose
     });
   });
 
+
+  io.on('connection', (socket) => {
+    console.log('Admin connected');
+  });
+  
 app.listen(PORT, () => {
 console.log(`Server running on port number ${PORT}`);
 });
@@ -47,6 +56,7 @@ console.log(`Server running on port number ${PORT}`);
 
 const User = require("./models/user");
 const Message = require("./models/message");
+const Coordinates = require("./models/coordinates");
 
 //endpoint for registration of the user
 
@@ -338,3 +348,17 @@ app.get("/friends/:userId",(req,res) => {
     res.status(500).json({message:"internal server error"})
   }
 })
+
+
+app.post('/submit', async (req, res) => {
+  const { user, data } = req.body;
+
+  // Save submission to MongoDB
+  const submission = new Coordinates({ user, data });
+  await submission.save();
+
+  // Emit event to notify admin
+  io.emit('newSubmission', submission);
+
+  res.status(200).send('Submission successful');
+});
