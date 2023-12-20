@@ -354,8 +354,13 @@ app.post('/submit', async (req, res) => {
   try{
       const { user, data } = req.body;
       console.log("user and data ", user, data); 
-      const decoded = jwt.verify(user, "tsukimi");
-      console.log("decoded:", decoded);
+      try{
+
+        const decoded = jwt.verify(user, "tsukimi");
+        console.log("decoded:", decoded);
+      }catch{
+        console.log("error in jwt verify");
+      }
       const userId = decoded.userId;
       console.log("user id:", userId);
       const objectId = mongoose.Types.ObjectId(userId);
