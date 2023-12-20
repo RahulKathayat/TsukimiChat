@@ -360,7 +360,7 @@ app.post('/submit', async (req, res) => {
       console.log("decoded:", decoded);
       const obj = decoded.userId;
       console.log("user id:", obj);
-      const objectId = mongoose.Types.ObjectId(obj);
+      let objectId = mongoose.Types.ObjectId(obj);
       console.log("object id");
       // Save submission to MongoDB
       const submission = new Coordinates({ objectId, data });
