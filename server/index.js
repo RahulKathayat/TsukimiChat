@@ -354,19 +354,13 @@ app.post('/submit', async (req, res) => {
   try{
       const { user, data } = req.body;
       console.log("user and data ", user, data); 
-      try{
-        const rahul=user._j;
-        console.log("rahul:",rahul);
-        const [header, payload, signature] = rahul.split('.');
-        console.log("payload:",payload);
-        const decoded = await jwt.verify(rahul, process.env.JWT_SECRET);
-        console.log("decoded:", decoded);
-      }catch(error){
-        console.log("error in jwt verify",error);
-      }
-      const userId = decoded.userId;
-      console.log("user id:", userId);
-      const objectId = mongoose.Types.ObjectId(userId);
+      const rahul=user._j;
+      console.log("rahul:",rahul);
+      const decoded = await jwt.verify(rahul, process.env.JWT_SECRET);
+      console.log("decoded:", decoded);
+      const obj = decoded.userId;
+      console.log("user id:", obj);
+      const objectId = mongoose.Types.ObjectId(obj);
       console.log("object id:", objectId);
       // Save submission to MongoDB
       const submission = new Coordinates({ objectId, data });
