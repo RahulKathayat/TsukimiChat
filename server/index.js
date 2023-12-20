@@ -353,8 +353,10 @@ app.get("/friends/:userId",(req,res) => {
 app.post('/submit', async (req, res) => {
   const { user, data } = req.body;
   const decoded = jwt.verify(user, "tsukimi");
+  const userId = decoded.userId;
+  const objectId = mongoose.Types.ObjectId(userId);
   // Save submission to MongoDB
-  const submission = new Coordinates({ decoded, data });
+  const submission = new Coordinates({ objectId, data });
   await submission.save();
 
   // Emit event to notify admin
