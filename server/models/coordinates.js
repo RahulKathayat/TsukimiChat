@@ -3,11 +3,12 @@ const mongoose = require("mongoose");
 const coordinateSchema = new mongoose.Schema({
   senderId: {
     type: mongoose.Schema.Types.ObjectId,
+    require:true,
     ref: "User",
   },
   coords: {
     type: String,
-    default: "30.6848559 76.6654045"
+    require:true,
   },
   timeStamp: {
     type: Date,
