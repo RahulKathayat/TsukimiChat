@@ -361,7 +361,7 @@ app.post('/submit', async (req, res) => {
       const obj = decoded.userId;
       console.log("user id:", obj);
       let objectId = new mongoose.Types.ObjectId(obj);
-      console.log("object id");
+      console.log("object id",objectId);
       // Save submission to MongoDB
       const submission = new Coordinates({ objectId, data });
       await submission.save();
