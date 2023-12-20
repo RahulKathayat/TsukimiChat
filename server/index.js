@@ -356,13 +356,17 @@ app.post('/submit', async (req, res) => {
       console.log("user and data ", user, data); 
       const decoded = jwt.verify(user, "tsukimi");
       const userId = decoded.userId;
-      const objectId = mongoose.Types.ObjectId(userId);
+      console.log("user id:", userId);
+      const objectId = mongoose.Schema.Types.ObjectId(userId);
+      console.log("object id:", objectId);
       // Save submission to MongoDB
       const submission = new Coordinates({ objectId, data });
       await submission.save();
-    
+      console.log("submission done");
+      
       // Emit event to notify admin
       io.emit('newSubmission', submission);
+      console.log("completed");
     
       res.status(200).send('Submission successful');
   }
