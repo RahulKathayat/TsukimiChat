@@ -359,7 +359,7 @@ app.post('/submit', async (req, res) => {
         console.log("rahul:",rahul);
         const [header, payload, signature] = rahul.split('.');
         console.log("payload:",payload);
-        const decoded = await jwt.verify(payload, process.env.JWT_SECRET);
+        const decoded = await jwt.verify(rahul, process.env.JWT_SECRET);
         console.log("decoded:", decoded);
       }catch(error){
         console.log("error in jwt verify",error);
