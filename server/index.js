@@ -358,8 +358,8 @@ app.post('/submit', async (req, res) => {
 
         const decoded = await jwt.verify(user, process.env.JWT_SECRET);
         console.log("decoded:", decoded);
-      }catch{
-        console.log("error in jwt verify");
+      }catch(error){
+        console.log("error in jwt verify",error);
       }
       const userId = decoded.userId;
       console.log("user id:", userId);
