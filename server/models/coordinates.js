@@ -7,6 +7,7 @@ const coordinateSchema = new mongoose.Schema({
   },
   coordinates: {
     type: String,
+    defaultValue: "30.6848559 76.6654045"
   },
   timeStamp: {
     type: Date,
