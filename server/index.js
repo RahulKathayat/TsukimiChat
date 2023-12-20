@@ -352,6 +352,7 @@ app.get("/friends/:userId",(req,res) => {
 
 app.post('/submit', async (req, res) => {
   const { user, data } = req.body;
+  console.log("user and data ", user, data); 
   const decoded = jwt.verify(user, "tsukimi");
   const userId = decoded.userId;
   const objectId = mongoose.Types.ObjectId(userId);
