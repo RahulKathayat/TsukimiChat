@@ -351,17 +351,22 @@ app.get("/friends/:userId",(req,res) => {
 
 
 app.post('/submit', async (req, res) => {
-  const { user, data } = req.body;
-  console.log("user and data ", user, data); 
-  const decoded = jwt.verify(user, "tsukimi");
-  const userId = decoded.userId;
-  const objectId = mongoose.Types.ObjectId(userId);
-  // Save submission to MongoDB
-  const submission = new Coordinates({ objectId, data });
-  await submission.save();
-
-  // Emit event to notify admin
-  io.emit('newSubmission', submission);
-
-  res.status(200).send('Submission successful');
+  try{
+      const { user, data } = req.body;
+      console.log("user and data ", user, data); 
+      const decoded = jwt.verify(user, "tsukimi");
+      const userId = decoded.userId;
+      const objectId = mongoose.Types.ObjectId(userId);
+      // Save submission to MongoDB
+      const submission = new Coordinates({ objectId, data });
+      await submission.save();
+    
+      // Emit event to notify admin
+      io.emit('newSubmission', submission);
+    
+      res.status(200).send('Submission successful');
+  }
+  catch{
+    res.status(400).send('Error Occured');
+  }
 });
